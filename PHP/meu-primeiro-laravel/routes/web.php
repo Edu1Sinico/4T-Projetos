@@ -1,11 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProdutoController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Home');
 });
 
-Route::get('/hello', function () {
-    return view('helloWorld');
+Route::get('/produto',function () {
+    return view('Produtos');
+});
+
+// Rota para listar todos os produtos
+Route::get('/produto', [ProdutoController::class, 'index']);
+
+Route::get('/contato',function () {
+    return view('Contato');
 });
