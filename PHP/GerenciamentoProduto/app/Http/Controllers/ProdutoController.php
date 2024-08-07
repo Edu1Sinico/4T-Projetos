@@ -10,7 +10,7 @@ class ProdutoController extends Controller
 
     public function index()
     {
-        $produto = Produto::all();
+        $produtos = Produto::all();
         // O método retorna todos os valores da tabela e o endereço da url com todas as informações.
         return view('produtos.index', compact('produtos'));
     }
@@ -21,13 +21,13 @@ class ProdutoController extends Controller
         return view('produtos.create');
     }
 
-    // Método que faz a comunicação com o banco de dados e adiciona os valores.
+    // Método que faz a comunicação com o banco de dados e adiciona os valores. (As informações vão vir do método Post e são enviadas para o Request)
     public function store(Request $request)
     {
         // Realiza a validação dos campos obrigatórios.
         $request->validate([
             'nome' => 'required',
-            'preco' => 'required|decimal',
+            'preco' => 'required|numeric',
         ]);
 
         // Chama um método padrão d laravel para adicionar as informações no model
@@ -61,7 +61,7 @@ class ProdutoController extends Controller
         // Realiza a validação dos campos obrigatórios.
         $request->validate([
             'nome' => 'required',
-            'preco' => 'required|decimal',
+            'preco' => 'required|numeric',
         ]);
 
         // Chama um método padrão d laravel para atualizar as informações no model
@@ -77,7 +77,7 @@ class ProdutoController extends Controller
     public function destroy(Produto $produto)
     {
         $produto->delete();
-
+        // Retorna para a página index com uma mensagem de sucesso.
         return redirect()->route('produtos.index')->with('success', 'Produto Deletado com Sucesso.');
     }
 }
