@@ -21,7 +21,7 @@ Route::get('/registro', [UsuarioController::class, 'showRegistroForm'])->name('u
 Route::post('/registro', [UsuarioController::class, 'registro'])->name('usuarios.registro');
 
 // Rota para logout
-Route::post('/logout', [UsuarioController::class, 'logout'])->name('usuarios.logout');
+Route::post('/logout', [UsuarioController::class, 'logout'])->name('usuario.logout');
 
 // Rota para o dashboard, protegida por autenticação
 Route::get('/dashboard', function () {

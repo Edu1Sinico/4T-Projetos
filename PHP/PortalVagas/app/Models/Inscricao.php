@@ -11,7 +11,7 @@ class inscricao extends Authenticatable
     use Notifiable, HasFactory;
 
     protected $fillable = [
-        'usurio_id',
+        'usuario_id',
         'vaga_id',
         'status',
     ];

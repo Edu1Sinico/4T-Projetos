@@ -11,11 +11,19 @@
         </ul>
 
         <div class="text-end">
+        @auth
+        <div>
+          <form action="{{route('usuario.logout')}}" method="POST">
+            @csrf
+            <input type="submit" value="Sair" class="btn btn-danger">
+          </form>
+        @else
           <a href="\login">
           <button type="button" class="btn btn-outline-light me-2">Login</button></a>
           <a href="\registro">
           <button type="button" class="btn btn-warning">Registrar-se</button></a>
-        </div>
+        @endauth
+      </div>
       </div>
     </div>
   </header>

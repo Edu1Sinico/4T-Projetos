@@ -1,8 +1,6 @@
 <?php
 
-
 return [
-
 
     /*
     |--------------------------------------------------------------------------
@@ -15,12 +13,10 @@ return [
     |
     */
 
-
     'defaults' => [
-        'guard' => 'usuario',
-        'password' => 'users',
+        'guard' => env('AUTH_GUARD', 'web'),
+        'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
     ],
-
 
     /*
     |--------------------------------------------------------------------------
@@ -39,22 +35,12 @@ return [
     |
     */
 
-
     'guards' => [
-        'usuario' => [
+        'web' => [
             'driver' => 'session',
-            'provider' => 'usuario',
-        ],
-
-
-        'api' => [
-            'driver' => 'token',
             'provider' => 'users',
         ],
     ],
-
-
-
 
     /*
     |--------------------------------------------------------------------------
@@ -73,20 +59,17 @@ return [
     |
     */
 
-
     'providers' => [
-        'usuario' => [
+        'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Usuario::class,
+            'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
-
 
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
     ],
-
 
     /*
     |--------------------------------------------------------------------------
@@ -107,15 +90,14 @@ return [
     |
     */
 
-
-    'password' => [
+    'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table' => 'senha_resets',
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
             'expire' => 60,
+            'throttle' => 60,
         ],
     ],
-
 
     /*
     |--------------------------------------------------------------------------
@@ -128,13 +110,6 @@ return [
     |
     */
 
-
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
 
-
 ];
-
-
-
-
-?>
