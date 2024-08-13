@@ -19,7 +19,7 @@ class Usuario extends Authenticatable
         'nome_empresa'
     ];
     protected $hidden = [
-        'senha',
+        'password',
         'remember_token',
     ];
     public function inscricoes()

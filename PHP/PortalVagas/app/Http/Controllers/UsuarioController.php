@@ -47,11 +47,11 @@ class UsuarioController extends Controller
 
     //     $request->validate([
     //         'email' => 'required|string|email',
-    //         'senha' => 'required|string',
+    //         'password' => 'required|string',
     //     ]);
 
     //     $usuario = Usuario::where('email', $request->email)->first();
-    //     if($usuario && Hash::check($request->senha, $usuario->senha)){
+    //     if($usuario && Hash::check($request->password, $usuario->password)){
     //         // Autentica o usuário
     //         session(['usuario_id' => $usuario->id]);
     //         return redirect()->route('dashboard');

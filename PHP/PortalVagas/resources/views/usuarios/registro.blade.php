@@ -7,7 +7,6 @@
     <form method="POST" action="{{ route('usuarios.registro') }}">
         @csrf
 
-
         <div class="form-group">
             <label for="nome">Nome</label>
             <input type="text" name="nome" class="form-control" required>
@@ -19,13 +18,13 @@
         </div>
         <br>
         <div class="form-group">
-            <label for="senha">Senha</label>
-            <input type="password" name="senha" class="form-control" required>
+            <label for="password">Senha</label>
+            <input type="password" min="8" name="password" class="form-control" required>
         </div>
         <br>
         <div class="form-group">
-            <label for="senha_confirmation">Confirme a Senha</label>
-            <input type="password" name="senha_confirmation" class="form-control" required>
+            <label for="password_confirmation">Confirme a Senha</label>
+            <input type="password" min="8" name="password_confirmation" class="form-control" required>
         </div>
         <br>
         <div align="center" class="form-group">
