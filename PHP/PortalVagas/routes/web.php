@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\VagaController;
+use App\Http\Middleware\DashboardMiddleware;
+use App\Http\Middleware\VagaMiddleware;
 
 // Rota para exibir a página inicial
 Route::get('/', function () {
@@ -26,4 +29,6 @@ Route::post('/logout', [UsuarioController::class, 'logout'])->name('usuario.logo
 // Rota para o dashboard, protegida por autenticação
 Route::get('/dashboard', function () {
     return view('usuarios.dashboard');
-})->middleware('auth')->name('dashboard');
+})->middleware(DashboardMiddleware::class)->name('dashboard');
+
+Route::resource('/vagas', VagaController::class)->middleware(VagaMiddleware::class);

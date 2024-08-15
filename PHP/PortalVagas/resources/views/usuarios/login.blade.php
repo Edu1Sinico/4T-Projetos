@@ -10,12 +10,12 @@
 
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" name="email" class="form-control" required autofocus>
+            <input type="email" name="email" placeholder="Insira o seu Email" class="form-control" required autofocus>
         </div>
         <br>
         <div class="form-group">
             <label for="password">Senha</label>
-            <input type="password" name="password" class="form-control" required>
+            <input type="password" name="password" placeholder="Insira sua senha" class="form-control" required>
         </div>
         <br>
         <div align="center" class="form-group">

@@ -12,13 +12,8 @@ class Vaga extends Model
         'descricao',
         'localizacao',
         'salario',
-        'empresa_id',
+        'empresa'
     ];
-
-    public function empresa()
-    {
-        return $this->belongsTo(Empresa::class);
-    }
 
     public function inscricoes()
     {

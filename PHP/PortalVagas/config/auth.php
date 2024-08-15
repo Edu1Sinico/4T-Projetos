@@ -18,7 +18,7 @@ return [
 
     'defaults' => [
         'guard' => 'usuario',
-        'password' => 'users',
+        'passwords' => 'users',
     ],
 
 
@@ -108,10 +108,10 @@ return [
     */
 
 
-    'password' => [
+    'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table' => 'senha_resets',
+            'table' => 'password_resets',
             'expire' => 60,
         ],
     ],

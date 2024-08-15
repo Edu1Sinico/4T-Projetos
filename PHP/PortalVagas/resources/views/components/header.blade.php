@@ -10,16 +10,17 @@
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
                 <li><a href="/dashboard" class="nav-link px-2 text-white">Dashboard</a></li>
+                @auth
+                    @if (Auth::user()->isEmpresa())
+                        <li><a href="/vagas" class="nav-link px-2 text-white">Vagas</a></li>
+                    @endif
+                @endauth
             </ul>
 
 
             @auth
-                <div class="text-end" style="display: flex; align-items: center; justify-content: space-evenly; width: 25%">
-                    @if (request()->user()->where('tipo', 'empresa')->first())
-                        <div class="title">Bem-vindo, <span>Empresa</span>!</div>
-                    @else
-                        <div class="title">Bem-vindo, <span> {{ Auth::user()->nome }}</span>!</div>
-                    @endif
+                <div class="text-end" style="display: flex; align-items: center; justify-content: space-evenly; width: 40%">
+                        <div class="title">Bem-vindo, <span>{{ Auth::user()->nome }}</span>!</div>
 
                     <form action="{{ route('usuario.logout') }}" method="POST">
                         @csrf

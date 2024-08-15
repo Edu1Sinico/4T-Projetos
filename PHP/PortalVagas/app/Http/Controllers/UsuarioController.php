@@ -83,6 +83,7 @@ class UsuarioController extends Controller
             'nome' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:usuarios',
             'password' => 'required|string|min:8|confirmed',
+            'tipo' => 'required|string',
         ]);
 
 
@@ -90,6 +91,9 @@ class UsuarioController extends Controller
             'nome' => $request->nome,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'tipo' => $request->tipo,
+            'cnpj' => $request->cnpj,
+            'nome_empresa' => $request->nome_empresa
         ]);
 
         // Após a realização do registro, ele automáticamente iniciará o login.
@@ -108,7 +112,6 @@ class UsuarioController extends Controller
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
 
         return redirect('/');
     }
