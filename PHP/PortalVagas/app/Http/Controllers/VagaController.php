@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Vaga;
 
 
@@ -12,9 +14,10 @@ class VagaController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $vagas = Vaga::all();
-        return view('vagas.index',compact('vagas'));
+    {   
+            $nomeEmpresa = Auth::user()->nome_empresa;
+            $vagas = Vaga::where('empresa',$nomeEmpresa)->get();
+            return view('vagas.index',compact('vagas'));
     }
 
 

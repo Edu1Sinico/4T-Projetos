@@ -12,7 +12,7 @@ class Vaga extends Model
         'descricao',
         'localizacao',
         'salario',
-        'empresa'
+        'empresa',
     ];
 
     public function inscricoes()
