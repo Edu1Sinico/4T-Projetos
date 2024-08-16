@@ -1,4 +1,4 @@
-<header class="p-3 text-bg-dark">
+<header class="p-3" style="position: fixed; width: 100%; z-index: 100; top: 0; background-color: lightgray;">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <div class="nav col-1 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">

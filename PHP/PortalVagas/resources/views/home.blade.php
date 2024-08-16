@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="home-title" style="border-bottom: 3px solid black; padding: 15px;">
-            <h1>Página Inicial - Portal de Vagas de Emprego</h1>
+            <h2>Página Inicial - Portal de Vagas de Emprego</h2>
         </div>
         <div id="productCarousel" class="carousel slide" data-bs-ride="carousel" style="display: flex; align-items: center; justify-content: center; padding: 15px;">
             <div class="carousel-inner">

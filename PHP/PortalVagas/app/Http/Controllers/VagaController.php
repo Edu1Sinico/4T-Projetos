@@ -88,9 +88,11 @@ class VagaController extends Controller
     public function destroy(Vaga $vaga)
     {
         $vaga->delete($vaga);
-
-
         return redirect()->route('vagas.index')->with('success', 'Vaga Deletada com sucesso.');
+    }
+
+    public function show(Vaga $vaga){
+        return view('vagas.show', compact('vaga'));
     }
 }
 
