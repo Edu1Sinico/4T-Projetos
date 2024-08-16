@@ -38,7 +38,11 @@
             <br>
             <div class="form-group">
                 <label for="empresa">Empresa:</label>
-                <input type="text" name="empresa" class="form-control" placeholder="Empresa" value="{{Auth::user()->nome_empresa}}">
+                @if (Auth::user()->nome_empresa != null)
+                    <input type="text" name="empresa" class="form-control" placeholder="Empresa" value="{{Auth::user()->nome_empresa}}" readonly>
+                @else
+                    <input type="text" name="empresa" class="form-control" placeholder="Empresa" value="">
+                @endif
             </div>
             <br>
             <div align="center" class="form-group">
