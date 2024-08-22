@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1 class="my-4">Criar Vaga</h1>
-
+    <br>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -14,6 +14,7 @@
                 @endforeach
             </ul>
         </div>
+        <br>
     @endif
 
 
@@ -25,31 +26,31 @@
             <label for="nome">Título:</label>
             <input type="text" name="titulo" class="form-control" value="{{$vaga->titulo}}">
         </div>
-
+        <br>
 
         <div class="form-group">
             <label for="descricao">Descrição:</label>
             <textarea name="descricao" class="form-control" value="{{$vaga->descricao}}"></textarea>
         </div>
-
+        <br>
 
         <div class="form-group">
             <label for="localizacao">Localização:</label>
             <input type="text" name="localizacao" class="form-control" value="{{$vaga->localizacao}}">
         </div>
-
+        <br>
 
         <div class="form-group">
             <label for="salario">Salário:</label>
             <input type="text" name="salario" class="form-control" value="{{$vaga->salario}}">
         </div>
-
+        <br>
 
         <div class="form-group">
             <label for="empresa">Empresa:</label>
             <input type="text" name="empresa" class="form-control" value="{{$vaga->empresa}}">
         </div>
-
+        <br>
 
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>

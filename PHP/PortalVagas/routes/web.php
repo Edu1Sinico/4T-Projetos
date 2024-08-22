@@ -9,7 +9,6 @@ use App\Http\Controllers\VagaController;
 use App\Http\Middleware\DashboardMiddleware;
 use App\Http\Middleware\UsuarioMiddleware;
 use App\Http\Middleware\VagaMiddleware;
-use App\Models\Usuario;
 
 // Rota para exibir a página inicial
 Route::get('/', [HomeController::class, 'index']);

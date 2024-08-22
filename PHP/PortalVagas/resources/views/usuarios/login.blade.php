@@ -19,7 +19,7 @@
         </div>
         <br>
         <div align="center" class="form-group">
-            <button type="submit" class="btn btn-primary">Registrar-se</button>
+            <button type="submit" class="btn btn-primary">Entrar</button>
         </div>
     </form>
 </div>
