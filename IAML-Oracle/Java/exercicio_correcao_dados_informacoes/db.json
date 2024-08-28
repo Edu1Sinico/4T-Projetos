@@ -1,0 +1,70 @@
+{
+    "usuarios": [
+        {
+            "id": 1,
+            "nome": "João",
+            "idade": 25,
+            "cidade": "São Paulo"
+        },
+        {
+            "id": 2,
+            "nome": "Maria",
+            "idade": 30,
+            "cidade": "Rio de Janeiro"
+        },
+        {
+            "id": 3,
+            "nome": "Carlos",
+            "idade": 28,
+            "cidade": "Belo Horizonte"
+        },
+        {
+            "id": 4,
+            "nome": "Ana",
+            "idade": 22,
+            "cidade": "Curitiba"
+        },
+        {
+            "id": 5,
+            "nome": "Pedro",
+            "idade": 35,
+            "cidade": "São Paulo"
+        },
+        {
+            "id": 6,
+            "nome": "Luciana",
+            "idade": 27,
+            "cidade": "Rio de Janeiro"
+        },
+        {
+            "id": 7,
+            "nome": "Rafael",
+            "idade": 24,
+            "cidade": "Salvador"
+        },
+        {
+            "id": 8,
+            "nome": "Fernanda",
+            "idade": 29,
+            "cidade": "São Paulo"
+        },
+        {
+            "id": 9,
+            "nome": "Bruno",
+            "idade": 31,
+            "cidade": "Manaus"
+        },
+        {
+            "id": 10,
+            "nome": "Beatriz",
+            "idade": 26,
+            "cidade": "Porto Alegre"
+        },
+        {
+            "id": 11,
+            "nome": "Eduardo",
+            "idade": 25,
+            "cidade": "Florianópolis"
+        }
+    ]
+}
