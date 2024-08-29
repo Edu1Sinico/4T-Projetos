@@ -105,7 +105,7 @@ exports.deletarLivro = async (req, res) => {
 
 
         // Remove o livro do banco de dados
-        await livro.remove();
+        await livro.deleteOne();
         // Retorna uma mensagem de sucesso
         res.json({ message: 'Livro deletado com sucesso' });
     } catch (err) {

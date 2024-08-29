@@ -1,1 +1,5 @@
-/node_modules/
+#diretório/dependências
+/node_modules
+
+#env
+.env
