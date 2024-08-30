@@ -40,7 +40,7 @@ function buscarLivros() {
                 const updateButton = document.createElement('a');
                 updateButton.textContent = 'Atualizar';
                 updateButton.classList.add('button');
-                updateButton.href = `update.html?id=${livro._id}`;
+                updateButton.href = `pages/update.html?id=${livro._id}`;
 
 
                 const deleteButton = document.createElement('button');
@@ -73,7 +73,7 @@ window.onload = buscarLivros;
 
 
 // -----------------------------------------------------------------------------------------------------------
-
+// Funções:
 
 // Função para adicionar um novo livro
 function adicionarLivro(livro) {
@@ -87,6 +87,61 @@ function adicionarLivro(livro) {
 }
 
 
+// Função atualizar um livro
+function atualizarLivro(id, livro) {
+    fetch(`${apiUrl}/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(livro)
+    })
+        .then(() => window.location.href = 'index.html')
+        .catch(error => console.error('Erro ao atualizar livro:', error));
+}
+
+
+
+// função que preenche o formulário de atualização com os dados do livro existente
+function preencherLivros() {
+    const id = new URLSearchParams(window.location.search).get('id');
+    fetch(`${apiUrl}/${id}`)
+        .then(response => response.json())
+        .then(livro => {
+            document.getElementById('livroId').value = livro._id;
+            document.getElementById('titulo').value = livro.titulo;
+            document.getElementById('autor').value = livro.autor;
+            document.getElementById('ano').value = livro.ano;
+            document.getElementById('genero').value = livro.genero;
+        })
+        .catch(error => console.error('Erro ao buscar livro:', error));
+}
+
+
+// Função para deletar um livro
+function deletarLivro(id) {
+    fetch(`${apiUrl}/${id}`, {
+        method: 'DELETE'
+    })
+    .then(() => buscarLivros())
+    .catch(error => console.error('Erro ao deletar livro:', error));
+}
+
+
+
+// -----------------------------------------------------------------------------------------------------------
+//Renderização ao Carregar as Páginas
+window.onload = function () {
+    if (window.location.pathname.includes("index.html")) {
+        buscarLivros();
+    }
+    if (window.location.pathname.includes('update.html')) {
+        preencherLivros();
+    }
+};
+
+// -----------------------------------------------------------------------------------------------------------
+//Disparador do Evento do Formulário
+
+// EventListener de Cadastro
 document.getElementById('livroCad').addEventListener('submit', function (event) {
     event.preventDefault();
 
@@ -104,20 +159,18 @@ document.getElementById('livroCad').addEventListener('submit', function (event) 
 });
 
 
-// -----------------------------------------------------------------------------------------------------------
+// EventListener de Atualização
+document.getElementById('livroUP').addEventListener('submit', function (event) {
+    event.preventDefault();
 
-
-// Preenche o formulário de atualização com os dados do livro existente
-if (window.location.pathname.includes('pages/update.html')) {
     const id = new URLSearchParams(window.location.search).get('id');
-    fetch(`${apiUrl}/${id}`)
-        .then(response => response.json())
-        .then(livro => {
-            document.getElementById('livroId').value = livro._id;
-            document.getElementById('titulo').value = livro.titulo;
-            document.getElementById('autor').value = livro.autor;
-            document.getElementById('ano').value = livro.ano;
-            document.getElementById('genero').value = livro.genero;
-        })
-        .catch(error => console.error('Erro ao buscar livro:', error));
-}
+    const titulo = document.getElementById('titulo').value;
+    const autor = document.getElementById('autor').value;
+    const ano = document.getElementById('ano').value;
+    const genero = document.getElementById('genero').value;
+
+    const livro = { titulo, autor, ano, genero };
+
+    // Atualizar livro existente
+    atualizarLivro(id, livro);
+});
