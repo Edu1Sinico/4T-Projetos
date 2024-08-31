@@ -126,12 +126,11 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt sed, itaque accusa
 
 **Bootstrap**
 <br>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt sed, itaque accusamus numquam sapiente laborum beatae iure aliquam, saepe deserunt eos praesentium mollitia vel hic. Numquam explicabo exercitationem possimus totam?
+Bootstrap é um popular framework de front-end utilizado para criar interfaces web responsivas e modernas. Desenvolvido pela equipe do Twitter, ele oferece uma ampla gama de componentes prontos, como botões e formulários, além de um sistema de grid flexível que facilita o design para diferentes dispositivos.
 
 <hr>
 
 **Github**
 <br>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt sed, itaque accusamus numquam sapiente laborum beatae iure aliquam, saepe deserunt eos praesentium mollitia vel hic. Numquam explicabo exercitationem possimus totam?
-
+Além disso, utilizamos o Git como sistema de controle de versão, permitindo o armazenamento seguro de todos os arquivos do projeto e da documentação. O Git não só facilita a colaboração entre os membros da equipe, como também assegura que todas as mudanças no código sejam registradas e possam ser revertidas, se necessário, garantindo assim um desenvolvimento mais organizado e controlado.
 
