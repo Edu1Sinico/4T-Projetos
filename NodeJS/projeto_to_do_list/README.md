@@ -102,25 +102,25 @@ Aqui estão alguns possíveis problemas que podem ocorrer durante o projeto:<br>
 > ## _Estrutura de Programação_
 **Framework React**
 <br>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt sed, itaque accusamus numquam sapiente laborum beatae iure aliquam, saepe deserunt eos praesentium mollitia vel hic. Numquam explicabo exercitationem possimus totam?
+React é uma biblioteca JavaScript amplamente utilizada para a construção de interfaces de usuário (UI) dinâmicas e interativas. Desenvolvido pelo Facebook, ele permite a criação de componentes reutilizáveis, facilitando a manutenção e a escalabilidade de projetos. React oferece uma abordagem eficiente para a atualização da UI com seu Virtual DOM, o que resulta em melhor desempenho e uma experiência de usuário mais fluida.
 
 <hr>
 
 **Compilador Node.js**
 <br>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt sed, itaque accusamus numquam sapiente laborum beatae iure aliquam, saepe deserunt eos praesentium mollitia vel hic. Numquam explicabo exercitationem possimus totam?
+Node.js é um ambiente de execução JavaScript no lado do servidor, que permite a construção de aplicações escaláveis e de alta performance. Ele é baseado no motor V8 do Google Chrome e possibilita a criação de servidores web rápidos, suportando um grande número de conexões simultâneas. Node.js é conhecido por sua eficiência em lidar com operações de I/O, tornando-o ideal para aplicações em tempo real.
 
 <hr>
 
 **MongoDB**
 <br>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt sed, itaque accusamus numquam sapiente laborum beatae iure aliquam, saepe deserunt eos praesentium mollitia vel hic. Numquam explicabo exercitationem possimus totam?
+MongoDB é um banco de dados NoSQL que armazena dados em documentos JSON-like, oferecendo flexibilidade e escalabilidade para aplicações modernas. Diferente dos bancos de dados relacionais tradicionais, o MongoDB permite a manipulação e consulta de grandes volumes de dados não estruturados de forma ágil. Sua arquitetura distribuída facilita o gerenciamento de dados em larga escala e oferece alta disponibilidade.
 
 <hr>
 
 **Autenticador JWT**
 <br>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt sed, itaque accusamus numquam sapiente laborum beatae iure aliquam, saepe deserunt eos praesentium mollitia vel hic. Numquam explicabo exercitationem possimus totam?
+JWT (JSON Web Token) é um padrão de autenticação e troca de informações seguras entre partes, utilizado principalmente em sistemas web. Ele permite a autenticação de usuários sem a necessidade de manter sessões no servidor, facilitando a escalabilidade e melhorando a segurança. O JWT contém informações codificadas sobre o usuário e sua validade, permitindo a verificação de identidade de forma simples e eficiente.
 
 <hr>
 
