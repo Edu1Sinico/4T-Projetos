@@ -48,7 +48,86 @@ Concluir o desenvolvimento e implementação do projeto em 3 meses.
 <br>
 
 > ## _Cronograma_
+O cronograma será divido em três meses:
 
+### Mês 1: Planejamento e Design
+
+**1. Semana 1-2: Pesquisa e Requisitos**
+- Coleta de requisitos junto aos stakeholders.
+- Definição das funcionalidades principais.
+- Criação da documentação inicial do projeto.
+
+<br>
+
+**2. Semana 3: Prototipagem de Baixa Fidelidade**
+- Desenvolvimento de wireframes e protótipos de baixa fidelidade.
+- Revisão e ajustes com base no feedback dos stakeholders.
+
+<br>
+
+**3. Semana 4: Prototipagem de Média Fidelidade**
+- Criação de protótipos de média fidelidade, incorporando feedbacks.
+- Apresentação e aprovação dos protótipos pelo cliente.
+
+<hr>
+
+### Mês 2: Desenvolvimento
+
+**1. Semana 5-6: Configuração do Ambiente de Desenvolvimento**
+- Configuração do ambiente de desenvolvimento (React, Node.js, MongoDB).
+- Implementação das funcionalidades principais (CRUD de tarefas, interface básica).
+
+<br>
+
+**2. Semana 7: Desenvolvimento do Backend**
+- Desenvolvimento das APIs em Node.js para gerenciamento de tarefas.
+- Configuração e integração do MongoDB com o backend.
+
+<br>
+
+**3. Semana 8: Implementação de Autenticação**
+- Implementação do sistema de autenticação usando JWT.
+- Testes iniciais de autenticação e segurança.
+
+<br>
+
+**3. Semana 9: Desenvolvimento do Frontend**
+- Desenvolvimento da interface de usuário com React e Bootstrap.
+- Implementação de funcionalidades dinâmicas, como atualização em tempo real de tarefas.
+
+<hr>
+
+### Mês 3: Testes e Implementação
+
+**1. Semana 10: Testes Funcionais**
+- Realização de testes funcionais e correção de bugs.
+- Testes de usabilidade com grupos de usuários.
+
+<br>
+
+**2. Semana 11: Testes de Segurança e Desempenho**
+- Testes de segurança (prevenção contra injeções de código, acessos não autorizados).
+- Testes de desempenho, incluindo carga e tempo de resposta.
+
+<br>
+
+**3. Semana 12: Ajustes Finais e Documentação**
+- Realização de ajustes finais com base nos testes.
+- Finalização da documentação do projeto.
+- Preparação e implementação da aplicação em ambiente de produção.
+
+<br>
+
+**3. Semana 13: Entrega do Projeto**
+- Apresentação do projeto finalizado para o cliente.
+- Entrega do projeto para o cliente.
+
+<br>
+
+**_Cronograma de Gantt do Projeto:_**
+<div align="center">
+    <img src="projeto_cronograma/cronograma_todo_list.png" alt="Cronograma do Projeto" width="800vh">
+</div>
 
 <br>
 
