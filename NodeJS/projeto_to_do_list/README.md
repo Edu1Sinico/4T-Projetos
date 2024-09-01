@@ -4,35 +4,50 @@
 
 - [Introdução](#introdução);
 - [Objetivos do Projeto](#objetivos-do-projeto);
+- [Cronograma](#cronograma);
 - [Funcionalidades](#funcionalidades);
-- [Banco de Dados](#banco-de-dados);
+- [Design e Estilos](#design-e-estilos);
 - [Análise de riscos](#análise-de-riscos);
 - [Estrutura de Programação](#estrutura-de-programação);
 
 >  ## _Introdução_
+A organização eficiente das tarefas diárias é um desafio constante para muitas instituições, incluindo o SENAI. Para melhorar a produtividade e garantir que todas as atividades sejam executadas de forma ordenada e dentro dos prazos estabelecidos, a escola SENAI identificou a necessidade de uma solução simples e eficaz. Em resposta a essa demanda, fui encarregado de desenvolver uma aplicação de gerenciamento de tarefas (To-Do-List) voltada especificamente para os colaboradores da instituição.
 
+Este projeto visa fornecer uma ferramenta prática e intuitiva que permitirá aos colaboradores organizar suas tarefas de maneira mais eficiente e segura. A aplicação não apenas facilitará o acompanhamento e a conclusão das atividades, mas também promoverá um ambiente de trabalho mais organizado e produtivo, contribuindo positivamente para o cumprimento dos objetivos institucionais.
 
 <br>
+
 > ## _Objetivos do Projeto_
+Fornecer uma ferramenta intuitiva e eficiente para a organização de tarefas dos colaboradores.<br><br>
 Os principais objetivos desse sistema, são:<br>
 
 **1. Específicos:**
+Automatizar o processo de gerenciamento de tarefas.
 
 <br>
 
 **2. Mensuráveis:**
+Acompanhar a quantidade de tarefas concluídas semanalmente.
 
 <br>
 
 **3. Atingíveis:**
+Garantir que o sistema seja acessível e fácil de usar para todos os colaboradores.
 
 <br>
 
 **4. Relevantes:**
+Aumentar a produtividade e eficiência dos colaboradores na execução de suas tarefas.
 
 <br>
 
 **5. Temporais:**
+Concluir o desenvolvimento e implementação do projeto em 6 meses.
+
+
+<br>
+
+> ## _Cronograma_
 
 
 <br>
@@ -46,56 +61,41 @@ Os principais objetivos desse sistema, são:<br>
 
 **_Fluxograma de Uso:_**
 
+**_Fluxograma de Classe:_**
 
 <br>
 
-> ## _Banco de Dados_
+> ## _Design e Estilos_
 
 
 <br>
 
 > ## _Análise de riscos_
 Aqui estão alguns possíveis problemas que podem ocorrer durante o projeto:<br><br>
-**1. Falhas no Sistema de Autenticação:**
-- Descrição: Possibilidade de vulnerabilidades no sistema de login e autenticação que possam permitir o acesso não autorizado.
-- Impacto: Acesso indevido a informações sensíveis de clientes e funcionários, comprometendo a segurança dos dados.
-- Mitigação: Implementação de autenticação multifator (MFA) e criptografia robusta para senhas.
+
+**1. Riscos Funcionais:**
+- Sincronização de Tarefas: Risco de falha na sincronização entre dispositivos, podendo resultar em informações desatualizadas. Mitigação: Testes extensivos de sincronização.
+- Exclusão de Tarefas: Possíveis dificuldades na exclusão de tarefas, levando ao acúmulo de informações desnecessárias. Mitigação: Sistema de confirmação de exclusão e testes rigorosos.
 <br>
 
-**2. Perda ou Corrupção de Dados:**
-- Descrição: Possibilidade de perda ou corrupção de dados críticos devido a falhas no banco de dados ou problemas no servidor.
-- Impacto: Perda irreparável de informações sobre medicamentos, clientes, e vendas, afetando a operação da farmácia.
-- Mitigação: Realização de backups regulares e implementação de mecanismos de recuperação de desastres.
+**2. Riscos de Segurança:**
+- Injeção de Código: Risco de inserção de scripts maliciosos nos campos de entrada. Mitigação: Validação e sanitização das entradas de dados.
+- Acesso Não Autorizado: Possibilidade de acessos não autorizados a informações sensíveis. Mitigação: Autenticação segura com multifator e criptografia de dados.
 <br>
 
-**3. Ataques de SQL Injection:**
-- Descrição: Risco de ataques de injeção de SQL, onde um invasor pode manipular consultas SQL para obter acesso não autorizado ao banco de dados.
-- Impacto: Comprometimento do banco de dados, resultando na exposição de dados confidenciais.
-- Mitigação: Utilização de consultas parametrizadas e práticas seguras de codificação para prevenir SQL Injection.
+**3. Riscos de Desempenho:**
+- Lentidão no Carregamento: O aumento do número de tarefas pode causar lentidão. Mitigação: Otimização de consultas e lazy loading.
+- Sobrecarga do Servidor: Acesso simultâneo por muitos usuários pode sobrecarregar o servidor. Mitigação: Balanceamento de carga e escalabilidade automática.
 <br>
 
-**4. Falta de Escalabilidade do Sistema:**
-- Descrição: O sistema pode não suportar um aumento significativo de usuários e transações.
-- Impacto: Desempenho degradado, lentidão, e possíveis interrupções no serviço à medida que a farmácia cresce.
-- Mitigação: Planejamento e arquitetura escalável desde o início, com uso de serviços de nuvem e balanceamento de carga.
+**4. Riscos de Confiabilidade:**
+- Perda de Dados: Risco de perda de dados em falhas ou manutenção. Mitigação: Backups automáticos regulares.
+- Atualizações Problemáticas: Atualizações podem introduzir novos bugs. Mitigação: Testes em ambiente de staging antes da produção.
 <br>
 
-**5. Problemas de Conformidade Legal:**
-- Descrição: Risco de não conformidade com leis e regulamentos relacionados à privacidade e segurança de dados (como a LGPD).
-- Impacto: Penalidades legais, multas, e danos à reputação da farmácia.
-- Mitigação: Consulta com especialistas em conformidade e implementação de medidas para garantir que o sistema atenda a todos os requisitos legais.
-<br>
-
-**6. Dependência de Fornecedores Terceirizados:**
-- Descrição: Dependência de serviços de terceiros, como provedores de hospedagem ou APIs externas, que podem ter interrupções ou falhas.
-- Impacto: Interrupções no sistema ou perda de funcionalidade em caso de falhas do fornecedor.
-- Mitigação: Acordos de nível de serviço (SLAs) rigorosos e planejamento de contingências, como backup de serviços.
-<br>
-
-**7. Erros Humanos:**
-- Descrição: Risco de erros humanos na manipulação de dados, configuração do sistema, ou no desenvolvimento do código.
-- Impacto: Falhas no sistema, perda de dados, ou introdução de vulnerabilidades de segurança.
-- Mitigação: Treinamento adequado dos funcionários e implementação de processos de revisão e auditoria.
+**5. Riscos de Usabilidade:**
+- Interface Complexa: Interface pode ser difícil de usar para alguns colaboradores. Mitigação: Testes de usabilidade para garantir uma interface intuitiva.
+- Compatibilidade de Dispositivos: A aplicação pode não funcionar corretamente em todos os dispositivos. Mitigação: Testes de compatibilidade com diferentes dispositivos e navegadores.
 
 <br>
 
