@@ -1,4 +1,9 @@
 # Projeto To-Do-List
+<br>
+<div align="center">
+    <img src="Logo To-Do List.png" alt="Logo To-Do List" width="200vh">
+</div>
+<br>
 
 >  ## _índice:_
 
