@@ -42,7 +42,7 @@ Aumentar a produtividade e eficiência dos colaboradores na execução de suas t
 <br>
 
 **5. Temporais:**
-Concluir o desenvolvimento e implementação do projeto em 6 meses.
+Concluir o desenvolvimento e implementação do projeto em 3 meses.
 
 
 <br>
