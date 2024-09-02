@@ -143,7 +143,7 @@ O cronograma será divido em três meses:
 
 **_Fluxograma de Uso:_**
 <div align="center">
-    <img src="" alt="Diagrama de Uso" width="800vh">
+    <img src="fluxogramas/diagrama_de_uso.png" alt="Diagrama de Uso" width="800vh">
 </div>
 <br>
 
