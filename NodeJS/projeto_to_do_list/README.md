@@ -145,6 +145,8 @@ O cronograma será divido em três meses:
 
 **_Fluxograma de Uso:_**
 
+<br>
+
 **_Fluxograma de Classe:_**
 
 <br>
