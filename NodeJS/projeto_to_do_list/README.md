@@ -144,11 +144,21 @@ O cronograma será divido em três meses:
 ### _Manual de Instrução:_
 
 **_Fluxograma de Uso:_**
-
+<div align="center">
+    <img src="" alt="Diagrama de Uso" width="800vh">
+</div>
 <br>
 
 **_Fluxograma de Classe:_**
+<div align="center">
+    <img src="fluxogramas/diagrama_de_classes.png" alt="Diagrama de Classe" width="800vh">
+</div>
+<br>
 
+**_Fluxograma de Fluxo:_**
+<div align="center">
+    <img src="" alt="Diagrama de Fluxo" width="800vh">
+</div>
 <br>
 
 > ## _Design e Estilos_
