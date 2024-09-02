@@ -138,10 +138,8 @@ O cronograma será divido em três meses:
 
 > ## _Funcionalidades_
 
-
-<br>
-
 ### _Manual de Instrução:_
+<br>
 
 **_Fluxograma de Uso:_**
 <div align="center">
@@ -157,7 +155,7 @@ O cronograma será divido em três meses:
 
 **_Fluxograma de Fluxo:_**
 <div align="center">
-    <img src="" alt="Diagrama de Fluxo" width="800vh">
+    <img src="fluxogramas/diagrama_de_fluxos.png" alt="Diagrama de Fluxo" width="800vh">
 </div>
 <br>
 
