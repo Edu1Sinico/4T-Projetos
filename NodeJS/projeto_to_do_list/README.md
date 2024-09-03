@@ -139,12 +139,20 @@ O cronograma será divido em três meses:
 > ## _Funcionalidades_
 
 ### _Manual de Instrução:_
-<br>
 
 **_Fluxograma de Uso:_**
 <div align="center">
     <img src="fluxogramas/diagrama_de_uso.png" alt="Diagrama de Uso" width="800vh">
 </div>
+<br>
+Este diagrama destaca as ações possíveis para os usuários comuns e administradores:
+
+1. Usuário Comum:
+    - Adicionar, editar, excluir e visualizar tarefas.
+    - Adicionar comentários, definir status e conclusão das tarefas.
+2. Administrador:
+    - Além das funções do usuário comum, o administrador pode gerenciar grupos de tarefas e usuários.
+
 <br>
 
 **_Fluxograma de Classe:_**
@@ -153,10 +161,38 @@ O cronograma será divido em três meses:
 </div>
 <br>
 
+Este diagrama mostra as classes principais do sistema e como elas interagem:
+
+- **Usuário**: Contém atributos como ID, nome, email, senha e tipo de usuário. Os métodos associados incluem login, logout, cadastro de tarefas, remoção, atualização e visualização de tarefas.
+
+- **Tarefas**: Classe que define as tarefas, com atributos como ID, descrição, prioridade, datas de criação e conclusão, prazo e status. Os métodos incluem alterar o status, concluir, definir prioridade e adicionar descrição.
+
+- **Grupos**: Gerencia os grupos de usuários, contendo atributos como ID, nome do grupo, email, descrição, lista de usuários e permissões. Os métodos incluem adicionar, remover e listar usuários, além de definir permissões.
+
+<br>
+
 **_Fluxograma de Fluxo:_**
 <div align="center">
     <img src="fluxogramas/diagrama_de_fluxos.png" alt="Diagrama de Fluxo" width="800vh">
 </div>
+<br>
+
+Este diagrama representa o fluxo geral do sistema, desde a página de login até as diversas funcionalidades disponíveis para os usuários e administradores.
+
+- **Página de Login**: É o ponto de entrada do sistema onde o usuário insere suas credenciais. A validação do login determina se o usuário é comum ou um administrador.
+
+- **Dashboard de Usuários**: Após o login, os usuários comuns são direcionados para essa área onde podem gerenciar suas tarefas, incluindo métodos para cadastrar, listar, atualizar e excluir tarefas.
+
+- **Dashboard de Administradores**: Os administradores são direcionados para uma dashboard específica onde podem gerenciar tanto usuários quanto tarefas, com a possibilidade de criação e gestão de grupos de usuários, incluindo a definição de permissões.
+
+- **Definir Tarefas em Grupo**: Funcionalidade que permite a criação e atribuição de tarefas para grupos específicos.
+
+- **Visualizar Tarefas**: Os usuários podem ver as tarefas atribuídas a eles, podendo alterar o status, adicionar comentários e marcar a conclusão das tarefas.
+
+<br>
+
+Esses diagramas juntos fornecem uma visão completa das funcionalidades e estrutura do sistema, desde a autenticação até o gerenciamento de tarefas e usuários, garantindo que tanto os usuários comuns quanto os administradores possam realizar suas atividades de forma eficiente.
+
 <br>
 
 > ## _Design e Estilos_
