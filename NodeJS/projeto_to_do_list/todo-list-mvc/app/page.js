@@ -1,7 +1,6 @@
 'use client';
 
 
-import Todo from '@/models/Todo';
 import { useState, useEffect } from 'react';
 
 
@@ -19,7 +18,6 @@ export default function Home() {
     const response = await fetch('/api/todos');
     const data = await response.json();
     setTodos(data.data);
-
   };
 
 
@@ -44,6 +42,7 @@ export default function Home() {
     setTodos(todos.filter((todo) => todo._id !== id));
   };
 
+
   return (
     <div>
       <h1>To-Do List</h1>
@@ -56,13 +55,6 @@ export default function Home() {
       <ul>
         {todos.map((todo) => (
           <li key={todo._id}>
-
-            {/* <input
-              type="checkbox"
-              value={true}
-              checked={Todo.completed}
-            /> */}
-
             {todo.title}
             <button onClick={() => deleteTodo(todo._id)}>Excluir</button>
           </li>
