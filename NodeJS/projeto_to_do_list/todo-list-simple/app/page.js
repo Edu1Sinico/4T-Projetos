@@ -2,6 +2,7 @@
 
 
 import Todo from '@/models/Todo';
+import { headers } from 'next/headers';
 import { useState, useEffect } from 'react';
 
 
@@ -44,6 +45,20 @@ export default function Home() {
     setTodos(todos.filter((todo) => todo._id !== id));
   };
 
+
+
+  const updateTodo = async (id, status) => {
+    const response = await fetch(`/api/todos/${id}`,{
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json', 
+      },
+      body: JSON.stringify({completed:!status}),
+    });
+    await reesponse.json();
+    fetchTodos();
+  }
+
   return (
     <div>
       <h1>To-Do List</h1>
@@ -57,13 +72,13 @@ export default function Home() {
         {todos.map((todo) => (
           <li key={todo._id}>
 
-            {/* <input
+            <input
               type="checkbox"
-              value={true}
               checked={Todo.completed}
-            /> */}
+              onClick={() => updateTodo(todo._id, todo.completed)}
+            />
 
-            {todo.title}
+            {todo.title} - {todo.completed == true ? Concluída : Pendente}
             <button onClick={() => deleteTodo(todo._id)}>Excluir</button>
           </li>
         ))}

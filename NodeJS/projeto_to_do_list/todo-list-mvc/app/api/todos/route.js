@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    const todos = await getTodos();
+    const todos = await getTodos(); //chamar o método do controller
     return NextResponse.json({ success: true, data: todos });
   } catch (error) {
     return NextResponse.json({ success: false }, { status: 400 });

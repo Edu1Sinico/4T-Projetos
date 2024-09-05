@@ -18,7 +18,7 @@
     transparent 360deg
   );
   --secondary-glow: radial-gradient(
-    rgb(0, 0, 0),
+    rgba(255, 255, 255, 1),
     rgba(255, 255, 255, 0)
   );
 

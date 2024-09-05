@@ -10,7 +10,7 @@ export const getTodos = async () => {
 };
 
 // Create
-export const createTodos = async () => {
+export const createTodos = async (data) => {
     await connectMongo();
     return await Todo.create(data);
 };
