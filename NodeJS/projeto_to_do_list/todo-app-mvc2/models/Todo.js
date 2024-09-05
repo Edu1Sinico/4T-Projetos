@@ -14,6 +14,8 @@ const TodoSchema = new mongoose.Schema({
         enum: ["Pendente", "Em desenvolvimento", "Concluído"],
         default: "Pendente"
     }
-});
+})
 
-export default mongoose.models.Todo || mongoose.model('Todo', TodoSchema);
+const Todo = mongoose.models.Todo || mongoose.model('Todo', TodoSchema);
+
+export default Todo;

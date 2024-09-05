@@ -54,7 +54,7 @@ export default function Home() {
       <button onClick={addTodo}>Adicionar Tarefa</button>
       <ul>
         {todos.map((todo) => (
-          <li key={todo._id}>
+          <li key={todo._id}> 
             {todo.title}
             <button onClick={() => deleteTodo(todo._id)}>Excluir</button>
           </li>
