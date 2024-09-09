@@ -2,10 +2,10 @@ import Todo from "@/models/Todo";
 import connectMongo from "@/utils/dbConnect";
 
 // Carregar Todos
-export const getTodos = async (req, res) => {
+export const getTodos = async (req) => {
     await connectMongo();
     try {
-        const todos = Todo.find({ userId: req.user._id });
+        const todos = Todo.find({ UserId: req.user.userId });
         res.json(200).json({ todos });
     } catch (error) {
         res.status(500).json({ error })
@@ -13,14 +13,14 @@ export const getTodos = async (req, res) => {
 }
 
 // Criar Tarefa
-export const addTodo = async (req, res) => {
+export const addTodo = async (req) => {
     const { title } = req.body;
     await connectMongo();
 
     try {
         const newTodo = new Todo({
             title,
-            userId: req.user._id, // Associa a tarefa ao usuário logado
+            UserId: req.user.userId, // Associa a tarefa ao usuário logado
         });
         await newTodo.save();
         res.status(201).json({ todo: newTodo });
@@ -30,14 +30,14 @@ export const addTodo = async (req, res) => {
 }
 
 // Atualizar Tarefa
-export const updateTodo = async (req, res) => {
+export const updateTodo = async (req) => {
     const { id } = req.query;
     const { title } = req.body;
     await connectMongo();
 
     try {
         const updateTodo = await Todo.findOneAndUpdate(
-            { _id: id, userId: req.user._id },
+            { _id: id, UserId: req.user.userId },
             { title },
             { status: true }
         );
@@ -51,13 +51,13 @@ export const updateTodo = async (req, res) => {
 }
 
 // delete Tarefa
-export const deleteTodo = async (req, res) => {
+export const deleteTodo = async (req) => {
     const { id } = req.query;
     await connectMongo();
 
 
     try {
-        const deletedTodo = await Todo.findOneAndDelete({ _id: id, userId: req.user.userId });
+        const deletedTodo = await Todo.findOneAndDelete({ _id: id, UserId: req.user.userId });
         if (!deletedTodo) return res.status(404).json({ message: 'Tarefa não encontrada' });
         res.status(200).json({ message: 'Tarefa deletada com sucesso' });
     } catch (error) {
