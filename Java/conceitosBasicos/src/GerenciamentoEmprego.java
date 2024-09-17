@@ -7,7 +7,7 @@ public class GerenciamentoEmprego {
     String[] funcionario = new String[3];
     String[] informacoesFunc = {"Nome", "Idade", "Salário"};
     String nome = "";
-    int i = -1, cont = 0;
+    int i = -1, j = 0;
     Scanner sc = new Scanner(System.in);
 
     // Adicionar funcionario
@@ -52,8 +52,10 @@ public class GerenciamentoEmprego {
         System.out.println("\n-----------------------------------\n");
         for (String[] funcionarios : listaFuncionarios) {
             for (String funcEspecifico : funcionarios) {
-                System.out.print(funcEspecifico + " ");
+                System.out.print(informacoesFunc[j] + ": " + funcEspecifico + " ");
+                j++;
             }
+            j = 0;
             System.out.println();
         }
         System.out.println("\n-----------------------------------\n");
