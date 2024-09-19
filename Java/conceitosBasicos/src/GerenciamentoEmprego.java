@@ -35,12 +35,13 @@ public class GerenciamentoEmprego {
 
         for (String[] funcionarios : listaFuncionarios) {
             i++;
-            System.out.println(funcionarios[i % 2]);
-            if (funcionarios[i % 2].contains(nome)) {
+
+            if (funcionarios[i].contains(nome)) {
                 listaFuncionarios.remove(i);
                 System.out.println("\nFuncionário removido com sucesso!");
                 funcEncontrado = true;
                 break;
+
             }
         }
 
