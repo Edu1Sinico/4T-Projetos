@@ -40,5 +40,8 @@ public class App {
             System.out.println("\nDeseja continuar? (0 = Sim) - (Qualquer outro valor = Não)");
             x = Integer.parseInt(sc.nextLine());
         } while (x == 0);
+
+        // Exercício 3
+
     }
 }
