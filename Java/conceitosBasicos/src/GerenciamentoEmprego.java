@@ -36,7 +36,7 @@ public class GerenciamentoEmprego {
         for (int i = 0; i < listaFuncionarios.size(); i++) {
             String[] funcionarios = listaFuncionarios.get(i);
 
-            if (funcionarios[i].contains(nome)) {
+            if (funcionarios[i].toString().contains(nome)) {
                 listaFuncionarios.remove(i);
                 System.out.println("\nFuncionário removido com sucesso!");
                 funcEncontrado = true;
@@ -45,9 +45,7 @@ public class GerenciamentoEmprego {
             i++;
         }
 
-        if (!funcEncontrado)
-
-        {
+        if (!funcEncontrado){
             System.out.println("\nO funcionário não foi encontrado.");
         }
 
@@ -55,7 +53,6 @@ public class GerenciamentoEmprego {
         funcEncontrado = false;
         i = 0;
         System.out.println("\n-----------------------------------\n");
-
     }
 
     // listar Funcionarios
