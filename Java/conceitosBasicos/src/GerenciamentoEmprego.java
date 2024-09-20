@@ -6,7 +6,7 @@ public class GerenciamentoEmprego {
     ArrayList<String[]> listaFuncionarios = new ArrayList<>();
     String[] informacoesFunc = { "Nome", "- Idade", "- Salário" };
     String nome = "";
-    int i = 0, j = 0;
+    int i = 0, posicao = 0, j = 0;
     Scanner sc = new Scanner(System.in);
 
     // Adicionar funcionario
@@ -36,8 +36,12 @@ public class GerenciamentoEmprego {
         for (int i = 0; i < listaFuncionarios.size(); i++) {
             String[] funcionarios = listaFuncionarios.get(i);
 
-            if (funcionarios[i].toString().contains(nome)) {
-                listaFuncionarios.remove(i);
+            if (i%3 == 0){
+                posicao = i;
+            }
+
+            if (funcionarios[posicao].toString().contains(nome)) {
+                listaFuncionarios.remove(posicao);
                 System.out.println("\nFuncionário removido com sucesso!");
                 funcEncontrado = true;
                 break;
