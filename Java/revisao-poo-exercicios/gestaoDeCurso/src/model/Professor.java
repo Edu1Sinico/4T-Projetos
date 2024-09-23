@@ -3,12 +3,19 @@ package model;
 public class Professor extends Pessoa {
     private double salario;
 
+    public Professor() {
+    };
+
+    public Professor(String nome, int cpf, double salario) {
+        super();
+        this.salario = salario;
+        System.out.println("\nProfessor cadastrado com sucesso!");
+    }
+
     @Override
-    public void exibirInformacoes() {
-        System.out.println(
-                "Nome do Professor: " + getNome()
-                        + "\n CPF: " + getCpf()
-                        + "\n Número da matrícula: " + salario);
+    public String exibirInformacoes() {
+        super.exibirInformacoes();
+        return "\nSalário: " + salario;
     }
 
     public double getSalario() {

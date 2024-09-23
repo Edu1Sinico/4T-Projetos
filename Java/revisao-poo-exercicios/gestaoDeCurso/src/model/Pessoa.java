@@ -4,10 +4,8 @@ public abstract class Pessoa {
     private String nome;
     private int cpf;
 
-    public void exibirInformacoes() {
-        System.out.println(
-                "Nome: " + nome
-                        + "\n CPF: " + cpf);
+    public String exibirInformacoes() {
+        return "Nome: " + nome + "\nCPF: " + cpf;
     }
 
     public String getNome() {
