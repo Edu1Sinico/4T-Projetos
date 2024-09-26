@@ -35,6 +35,8 @@ public class CursoController {
 
             listaAluno.add(aluno);
 
+            System.out.println("\nAluno cadastrado com sucesso!");
+
         } catch (NullPointerException ex) {
             throw new NullPointerException("O valor não pode ser vazio! " + ex);
         } catch (NumberFormatException ex) {
@@ -56,6 +58,8 @@ public class CursoController {
             double salario = Double.parseDouble(sc.nextLine());
 
             new Professor(nome, cpf, salario);
+
+            System.out.println("\nProfessor cadastrado com sucesso!");
 
         } catch (NullPointerException ex) {
             throw new NullPointerException("O valor não pode ser vazio! " + ex);
