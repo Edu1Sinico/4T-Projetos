@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
         ListExample list = new ListExample();
         SetExample set = new SetExample();
+        MapExample map = new MapExample();
 
         // List
         System.out.println("---------------------------------");
