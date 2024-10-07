@@ -1,0 +1,8 @@
+O que devo fazer para o projeto:
+	- Sistema de validação de senha (Criptografar e tamanho mínimo de 8);
+	- Tela de Login;
+	- Validação RA;
+	- Validação de Email;
+	- Validação de Idade;
+	- Aluno podera ver suas informações pessoais e acadêmicas no sistema (Notas, Médias e Situação)
+	- Professor podera aplicar as notas dos alunos.
