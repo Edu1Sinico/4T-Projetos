@@ -2,6 +2,106 @@ package com.example.View;
 
 import javax.swing.*;
 
-public class JanelaLogin extends JFrame{
+import com.example.Connection.AlunoDAO;
+import com.example.Connection.ProfessorDAO;
+import com.example.Model.Aluno;
+import com.example.Model.Professor;
+
+import java.util.List;
+import java.util.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class JanelaLogin extends JFrame {
+    private JButton login;
+    private JTextField emailField, senhaField;
+    private List<Aluno> alunos;
+    private List<Professor> professores;
+
+    public JanelaLogin() {
+        super("Login");
+
+        // Painel principal
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+
+        JPanel inputPanel = new JPanel();
+        inputPanel.setLayout(new GridLayout(4, 1));
+
+        // Campo do título
+        JPanel tituloPanel = new JPanel();
+        tituloPanel.setLayout(new FlowLayout());
+        tituloPanel.add(new JLabel("Tela de Login"));
+        inputPanel.add(tituloPanel);
+
+        // Campo do Email
+        JPanel emailPanel = new JPanel();
+        emailPanel.setLayout(new FlowLayout());
+        emailPanel.add(new JLabel("Email:"));
+        emailField = new JTextField(20);
+        emailPanel.add(emailField);
+        inputPanel.add(emailPanel);
+
+        // Campo da senha
+        JPanel senhaPanel = new JPanel();
+        senhaPanel.setLayout(new FlowLayout());
+        senhaPanel.add(new JLabel("Senha:"));
+        senhaField = new JTextField(20);
+        senhaPanel.add(senhaField);
+        inputPanel.add(senhaPanel);
+
+        // Campo do botão
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout());
+        buttonPanel.add(login = new JButton("Login"));
+        inputPanel.add(buttonPanel);
+
+        mainPanel.add(inputPanel);
+
+        // Adiciona o painel principal ao JFrame
+        add(mainPanel);
+
+        setSize(300, 200);
+        // Método para centralizar a tela
+        int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+        int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
+        setLocation((screenWidth - this.getWidth()) / 2, (screenHeight - this.getHeight()) / 2);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        // Tratamento de eventos;
+        login.addActionListener(new ActionListener() {
+            alunos = new AlunoDAO().listarTodos();
+            professores = new ProfessorDAO().listarTodos();
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                try {
+                    if (!(emailField.getText().isEmpty() || senhaField.getText().isEmpty())) {
+                        
+                    } else {
+                        throw new NullPointerException(
+                                "Informações inválidas. Por favor preencha as informações vazias.");
+                    }
+                } catch (NullPointerException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "NullPointerException",
+                            JOptionPane.WARNING_MESSAGE);
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null,
+                            "Formatação inválida, por favor digite somente números válidos.", "NumberFormatException",
+                            JOptionPane.WARNING_MESSAGE);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro.", "Exception",
+                            JOptionPane.WARNING_MESSAGE);
+                }
+            }
+
+        });
+    }
     
+    // métodos para tornar a janela visível
+    public void run() {
+        this.setVisible(true);
+    }
 }

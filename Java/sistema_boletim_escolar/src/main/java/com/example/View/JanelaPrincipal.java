@@ -1,6 +1,7 @@
 package com.example.View;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class JanelaPrincipal extends JFrame {
     private JTabbedPane jTPane;
@@ -20,7 +21,12 @@ public class JanelaPrincipal extends JFrame {
         // JanelaMateria tab3 = new JanelaMateria();
         // jTPane.add("Materias", tab3);
 
-        setBounds(50, 50, 700, 600);
+        // setBounds(50, 50, 700, 600);
+        setSize(700, 600);
+        // Método para centralizar a tela
+        int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+        int screenHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
+        setLocation((screenWidth - this.getWidth()) / 2, (screenHeight - this.getHeight()) / 2);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
     }

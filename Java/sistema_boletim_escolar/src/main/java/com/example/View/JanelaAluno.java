@@ -6,11 +6,9 @@ import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import com.example.Connection.ProfessorDAO;
 import com.example.Connection.AlunoDAO;
 import com.example.Controller.AlunoController;
 import com.example.Exception.*;
-import com.example.Model.Professor;
 // Importação da Classe
 import com.example.Model.Aluno;
 
