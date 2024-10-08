@@ -70,15 +70,15 @@ public class JanelaAvaliacao extends JFrame {
         inputPanel.add(raAlunoField);
         // Nota 1 - 4
         inputPanel.add(new JLabel("Nota 1"));
-        nota1Field.setColumns(4);
+        nota1Field = new JTextField(4);
         inputPanel.add(nota1Field);
         // Nota 2 - 5
         inputPanel.add(new JLabel("Nota 2"));
-        nota2Field.setColumns(4);
+        nota2Field = new JTextField(4);
         inputPanel.add(nota2Field);
         // Nota 3 - 6
         inputPanel.add(new JLabel("Nota 3"));
-        nota3Field.setColumns(4);
+        nota3Field = new JTextField(4);
         inputPanel.add(nota3Field);
 
         mainPanel.add(inputPanel);

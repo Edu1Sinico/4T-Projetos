@@ -3,20 +3,29 @@ package com.example.View;
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 
+import com.example.Connection.AlunoDAO;
+import com.example.Connection.MateriaDAO;
+import com.example.Connection.ProfessorDAO;
 import com.example.Model.Aluno;
 import com.example.Model.Materia;
+import com.example.Model.Professor;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 public class JanelaBoletim extends JFrame {
 
     // Atributos
     private JButton filtrar, sair;
-    private JTextField raField, nomeField, idadeField, cpfField, emailField, senhaField, turmaField;
+    private JTextField raField, nomeField, idadeField, cpfField, emailField, senhaField, turmaField, filtroField;
     private List<Aluno> alunos;
     private List<Materia> materias;
+    private List<Professor> professores;
+    private JTable table;
+    private DefaultTableModel tableModel;
+    private String nomeProfessor;
     // MaskFormatter
     private MaskFormatter cpfFormatter, raFormatter, idadeFormatter;
 
@@ -83,8 +92,28 @@ public class JanelaBoletim extends JFrame {
 
         mainPanel.add(inputPanel);
 
-        add(mainPanel);
+        JPanel botoes = new JPanel();
+        filtroField = new JTextField(20);
+        botoes.add(filtroField);
+        botoes.add(filtrar = new JButton("Filtrar"));
+        mainPanel.add(botoes);
 
+        // tabela de notas do aluno
+        JScrollPane jSPane = new JScrollPane();
+        mainPanel.add(jSPane);
+        tableModel = new DefaultTableModel(new Object[][] {},
+                new String[] { "Matéria", "Nota 1", "Nota 2", "Nota 3", "Média",
+                        "Professor" });
+        table = new JTable(tableModel);
+        jSPane.setViewportView(table);
+
+        // Criar a tabela
+        new MateriaDAO().criaTabela();
+
+        // Atualizar a tabela
+        atualizarTabela(aluno.getRa());
+
+        add(mainPanel);
         setSize(700, 600);
         // Método para centralizar a tela
         int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -119,6 +148,36 @@ public class JanelaBoletim extends JFrame {
                 }
             }
         });
+    }
+
+    // Método para atualizar a tabela de exibição com dados do banco de dados
+    private void atualizarTabela(String raAluno) {
+        tableModel.setRowCount(0); // Limpa todas as linhas existentes na tabela
+        materias = new MateriaDAO().listarTodos();
+        // Obtém os materias atualizados do banco de dados
+        for (Materia materia : materias) {
+
+            // Verifica se o nome do professor esta na lista
+            for (Professor professor : listarProfessores()) {
+                if (professor.getCpf().equals(materia.getCpfProfessor())) {
+                    nomeProfessor = professor.getNome();
+                }
+            }
+
+            if (raAluno.equals(materia.getRaAluno())) {
+                // Adiciona os dados de cada materia como uma nova linha na tabela Swing
+                tableModel.addRow(new Object[] { materia.getNomeMateria(),
+                        materia.getNota1(), materia.getNota2(), materia.getNota3(), materia.getMedia(),
+                        nomeProfessor
+                });
+            }
+
+        }
+    }
+
+    // Métodos de listagem de professores
+    public List<Professor> listarProfessores() {
+        return professores = new ProfessorDAO().listarTodos();
     }
 
     // métodos para tornar a janela visível
