@@ -371,11 +371,15 @@ public class JanelaAvaliacao extends JFrame {
             });
         }
 
+        // Sair
         sair.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                new JanelaLogin().run();
+                if (JOptionPane.showConfirmDialog(null, "Deseja sair do seu login?",
+                        "Sair...", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    dispose();
+                    new JanelaLogin().run();
+                }
             }
         });
 

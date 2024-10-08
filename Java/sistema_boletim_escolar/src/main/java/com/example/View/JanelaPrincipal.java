@@ -14,7 +14,7 @@ public class JanelaPrincipal extends JFrame {
         add(jTPane);
         JPanel headerPanel = new JPanel();
         headerPanel.add(sair = new JButton("Sair"));
-        jTPane.add("Sair",headerPanel);
+        jTPane.add("Sair", headerPanel);
         // criandos as tabs
         // tab1 Professores
         JanelaProfessor tab1 = new JanelaProfessor();
@@ -34,11 +34,15 @@ public class JanelaPrincipal extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
 
+        // Sair
         sair.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                new JanelaLogin().run();
+                if (JOptionPane.showConfirmDialog(null, "Deseja sair do seu login?",
+                        "Sair...", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    dispose();
+                    new JanelaLogin().run();
+                }
             }
         });
 

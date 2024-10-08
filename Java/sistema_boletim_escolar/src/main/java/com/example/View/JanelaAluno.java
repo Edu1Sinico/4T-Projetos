@@ -15,7 +15,7 @@ import com.example.Model.Aluno;
 
 public class JanelaAluno extends JPanel {
 
-    // Atributs
+    // Atributos
     private JButton cadastrar, apagar, editar, limpar;
     private JTextField raField, nomeField, idadeField, cpfField, emailField, senhaField;
     private List<Aluno> alunos;
@@ -56,7 +56,7 @@ public class JanelaAluno extends JPanel {
         try {
             idadeFormatter = new MaskFormatter("##");
             idadeField = new JFormattedTextField(idadeFormatter);
-            idadeField.setColumns(10);
+            idadeField.setColumns(2);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
