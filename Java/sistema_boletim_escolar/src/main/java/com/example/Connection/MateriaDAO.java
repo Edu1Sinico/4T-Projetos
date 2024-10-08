@@ -21,9 +21,9 @@ public class MateriaDAO {
     }
 
     public void criaTabela() {
-        String sql = "CREATE TABLE IF NOT EXISTS materia (ID INTEGER PRIMARY KEY, NOME-MATERIA VARCHAR(255), NOTA1 DECIMAL, NOTA2 DECIMAL, NOTA3 DECIMAL, MEDIA DECIMAL,"
-                + "CONSTRAINT fk_professor FOREIGN KEY (cpfProfessor) REFERENCES professores(cpf),"
-                + "CONSTRAINT fk_aluno FOREIGN KEY (raAluno) REFERENCES alunos(ra))";
+        String sql = "CREATE TABLE IF NOT EXISTS materia (ID INTEGER PRIMARY KEY, NOMEMATERIA VARCHAR(255), NOTA1 DECIMAL, NOTA2 DECIMAL, NOTA3 DECIMAL, MEDIA DECIMAL, cpf_professor VARCHAR(14),  ra_aluno VARCHAR(6),"
+                + "CONSTRAINT fk_professor FOREIGN KEY (cpf_professor) REFERENCES professor(cpf),"
+                + "CONSTRAINT fk_aluno FOREIGN KEY (ra_aluno) REFERENCES aluno(ra))";
         try (Statement stmt = this.connection.createStatement()) {
             stmt.execute(sql);
             System.out.println("Tabela de Materias criada com sucesso.");
@@ -60,8 +60,8 @@ public class MateriaDAO {
                         rs.getDouble("nota2"),
                         rs.getDouble("nota3"),
                         rs.getDouble("media"),
-                        rs.getString("cpfProfessor"),
-                        rs.getString("raAluno"));
+                        rs.getString("cpf_professor"),
+                        rs.getString("ra_aluno"));
                 materias.add(materia); // Adiciona o objeto Materia na lista de materias
             }
         } catch (SQLException ex) {
@@ -75,10 +75,11 @@ public class MateriaDAO {
     }
 
     // Cadastrar Carro no banco
-    public void cadastrar(int id, String nome, double nota1, double nota2, double nota3, double media, String cpfProfessor, String raAluno) {
+    public void cadastrar(int id, String nome, double nota1, double nota2, double nota3, double media,
+            String cpfProfessor, String raAluno) {
         PreparedStatement stmt = null;
         // Define a instrução SQL parametrizada para cadastrar na tabela
-        String sql = "INSERT INTO materia (id, nome-materia, nota1, nota2, nota3, media, cpfProfessor, raAluno) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO materia (id, nomeMateria, nota1, nota2, nota3, media, cpf_professor, ra_aluno) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id);
@@ -87,11 +88,12 @@ public class MateriaDAO {
             stmt.setDouble(4, nota2);
             stmt.setDouble(5, nota3);
             stmt.setDouble(6, media);
-            stmt.setString(7,cpfProfessor);
-            stmt.setString(8,raAluno);
+            stmt.setString(7, cpfProfessor);
+            stmt.setString(8, raAluno);
             stmt.executeUpdate();
             System.out.println("Dados inseridos com sucesso");
-        } catch (SQLException e) {
+        } 
+        catch (SQLException e) {
             throw new RuntimeException("Erro ao inserir dados no banco de dados.", e);
         } finally {
             ConnectionFactory.closeConnection(connection, stmt);

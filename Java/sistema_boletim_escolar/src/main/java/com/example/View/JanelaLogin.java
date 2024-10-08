@@ -17,9 +17,10 @@ public class JanelaLogin extends JFrame {
     private JTextField emailField, senhaField;
     private List<Aluno> alunos;
     private List<Professor> professores;
+    private boolean loginConfirmado = false;
 
     public JanelaLogin() {
-        super("Login");
+        super("Sistema de Boletim Escolar - Login");
 
         // Painel principal
         JPanel mainPanel = new JPanel();
@@ -71,15 +72,51 @@ public class JanelaLogin extends JFrame {
 
         // Tratamento de eventos;
         login.addActionListener(new ActionListener() {
-            alunos = new AlunoDAO().listarTodos();
-            professores = new ProfessorDAO().listarTodos();
-
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                
                 try {
                     if (!(emailField.getText().isEmpty() || senhaField.getText().isEmpty())) {
-                        
+
+                        // Usuário Aluno
+                        for (Aluno aluno : listarAlunos()) {
+                            if (aluno.getEmail().equals(emailField.getText())
+                                    && aluno.getSenha().equals(senhaField.getText())) {
+                                JOptionPane.showMessageDialog(null, "Bem-vindo, " + aluno.getNome() + "!", "Bem-vindo!",
+                                        JOptionPane.INFORMATION_MESSAGE);
+                                dispose();
+                                new JanelaBoletim(aluno).run();
+                                loginConfirmado = true;
+                            }
+                        }
+                        // Usuário Professor
+                        for (Professor professor : listarProfessores()) {
+                            if (professor.getEmail().equals(emailField.getText())
+                                    && professor.getSenha().equals(senhaField.getText())) {
+                                JOptionPane.showMessageDialog(null, "Bem-vindo, " + professor.getNome() + "!",
+                                        "Bem-vindo!",
+                                        JOptionPane.INFORMATION_MESSAGE);
+                                dispose();
+                                new JanelaAvaliacao(professor).run();
+                                loginConfirmado = true;
+                            }
+                        }
+
+                        // Usuário Admin
+                        if (emailField.getText().equals("admin@email.com") && senhaField.getText().equals("admin123")) {
+                            JOptionPane.showMessageDialog(null, "Bem-vindo Admin!", "Bem-vindo!",
+                                    JOptionPane.INFORMATION_MESSAGE);
+                            dispose();
+                            new JanelaPrincipal().run();
+                        } else if (loginConfirmado) {
+                            loginConfirmado = false;
+                        } else {
+                            // Criar uma Exception para esta mensagem
+                            JOptionPane.showMessageDialog(null,
+                                    "Credenciais inválidas. Verifique o campo de email e senha.",
+                                    "LoginValidationException",
+                                    JOptionPane.ERROR_MESSAGE);
+                        }
                     } else {
                         throw new NullPointerException(
                                 "Informações inválidas. Por favor preencha as informações vazias.");
@@ -91,15 +128,26 @@ public class JanelaLogin extends JFrame {
                     JOptionPane.showMessageDialog(null,
                             "Formatação inválida, por favor digite somente números válidos.", "NumberFormatException",
                             JOptionPane.WARNING_MESSAGE);
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Erro.", "Exception",
-                            JOptionPane.WARNING_MESSAGE);
-                }
+                } 
+                // catch (Exception ex) {
+                //     JOptionPane.showMessageDialog(null, "Erro.", "Exception",
+                //             JOptionPane.WARNING_MESSAGE);
+                // }
             }
 
         });
     }
-    
+
+    // Métodos de listagem de alunos
+    public List<Aluno> listarAlunos() {
+        return alunos = new AlunoDAO().listarTodos();
+    }
+
+    // Métodos de listagem de professores
+    public List<Professor> listarProfessores() {
+        return professores = new ProfessorDAO().listarTodos();
+    }
+
     // métodos para tornar a janela visível
     public void run() {
         this.setVisible(true);

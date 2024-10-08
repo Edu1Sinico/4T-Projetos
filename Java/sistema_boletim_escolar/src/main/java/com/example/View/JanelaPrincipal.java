@@ -2,14 +2,19 @@ package com.example.View;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class JanelaPrincipal extends JFrame {
     private JTabbedPane jTPane;
+    private JButton sair;
 
     public JanelaPrincipal() {
-        super("Sistema de Boletim Escolar");
+        super("Sistema de Boletim Escolar - Página Principal");
         jTPane = new JTabbedPane();
         add(jTPane);
+        JPanel headerPanel = new JPanel();
+        headerPanel.add(sair = new JButton("Sair"));
+        jTPane.add("Sair",headerPanel);
         // criandos as tabs
         // tab1 Professores
         JanelaProfessor tab1 = new JanelaProfessor();
@@ -21,7 +26,6 @@ public class JanelaPrincipal extends JFrame {
         // JanelaMateria tab3 = new JanelaMateria();
         // jTPane.add("Materias", tab3);
 
-        // setBounds(50, 50, 700, 600);
         setSize(700, 600);
         // Método para centralizar a tela
         int screenWidth = Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -29,6 +33,15 @@ public class JanelaPrincipal extends JFrame {
         setLocation((screenWidth - this.getWidth()) / 2, (screenHeight - this.getHeight()) / 2);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
+
+        sair.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new JanelaLogin().run();
+            }
+        });
+
     }
 
     // métodos para tornar a janela visível
