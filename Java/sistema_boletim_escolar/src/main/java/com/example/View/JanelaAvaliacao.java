@@ -2,6 +2,7 @@ package com.example.View;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 
 import com.example.Connection.AlunoDAO;
 import com.example.Connection.MateriaDAO;
@@ -10,6 +11,7 @@ import com.example.Controller.AlunoController;
 import com.example.Controller.MateriaController;
 import com.example.Exception.CpfValidiationException;
 import com.example.Exception.RaValidiationException;
+import com.example.Exception.SelectedTableException;
 import com.example.Model.Aluno;
 import com.example.Model.Materia;
 import com.example.Model.Professor;
@@ -32,6 +34,8 @@ public class JanelaAvaliacao extends JFrame {
     private int id = 0;
     private String nomeAluno;
     private String nomeProfessor;
+    // MaskFormatter
+    private MaskFormatter raFormatter, doubleFormatter;
 
     public JanelaAvaliacao(Professor professor) {
         super("Sistema de Boletim Escolar - Avaliar Aluno");
@@ -56,19 +60,43 @@ public class JanelaAvaliacao extends JFrame {
         inputPanel.add(nomeMateriaField);
         // RA do Aluno - 3
         inputPanel.add(new JLabel("RA do Aluno"));
-        raAlunoField = new JTextField(20);
+        try {
+            raFormatter = new MaskFormatter("######");
+            raAlunoField = new JFormattedTextField(raFormatter);
+            raAlunoField.setColumns(10);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         inputPanel.add(raAlunoField);
         // Nota 1 - 4
         inputPanel.add(new JLabel("Nota 1"));
-        nota1Field = new JTextField(4);
+        try {
+            doubleFormatter = new MaskFormatter("##.##");
+            nota1Field = new JFormattedTextField(doubleFormatter);
+            nota1Field.setColumns(10);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         inputPanel.add(nota1Field);
         // Nota 2 - 5
         inputPanel.add(new JLabel("Nota 2"));
-        nota2Field = new JTextField(4);
+        try {
+            doubleFormatter = new MaskFormatter("##.##");
+            nota2Field = new JFormattedTextField(doubleFormatter);
+            nota2Field.setColumns(10);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         inputPanel.add(nota2Field);
         // Nota 3 - 6
         inputPanel.add(new JLabel("Nota 3"));
-        nota3Field = new JTextField(4);
+        try {
+            doubleFormatter = new MaskFormatter("##.##");
+            nota3Field = new JFormattedTextField(doubleFormatter);
+            nota3Field.setColumns(10);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         inputPanel.add(nota3Field);
 
         mainPanel.add(inputPanel);
@@ -122,22 +150,28 @@ public class JanelaAvaliacao extends JFrame {
             @Override
             public void mouseClicked(MouseEvent evt) {
                 linhaSelecionada = table.rowAtPoint(evt.getPoint());
-                if (linhaSelecionada != -1) {
-                    for (Aluno aluno : listarAlunos()) {
-                        if (aluno.getNome().equals((String) table.getValueAt(linhaSelecionada, 1))) {
-                            raAlunoField.setText(aluno.getRa());
+                if (professor.getEspecializacao().equals(((String) table.getValueAt(linhaSelecionada, 2)))) {
+                    if (linhaSelecionada != -1) {
+                        for (Aluno aluno : listarAlunos()) {
+                            if (aluno.getNome().equals((String) table.getValueAt(linhaSelecionada, 1))) {
+                                raAlunoField.setText(aluno.getRa());
+                            }
                         }
+                        idField.setText(String.valueOf(table.getValueAt(linhaSelecionada, 0)));
+                        nota1Field.setText(String.valueOf(table.getValueAt(linhaSelecionada, 3)));
+                        nota2Field.setText(String.valueOf(table.getValueAt(linhaSelecionada, 4)));
+                        nota3Field.setText(String.valueOf(table.getValueAt(linhaSelecionada, 5)));
+                        // Desativa o textfield da cpf
+                        idField.setEditable(false);
+                        // Desativa o botão
+                        aplicar.setEnabled(false);
+                    } else {
+                        // Ativa o botão
+                        aplicar.setEnabled(true);
                     }
-                    nota1Field.setText(String.valueOf(table.getValueAt(linhaSelecionada, 3)));
-                    nota2Field.setText(String.valueOf(table.getValueAt(linhaSelecionada, 4)));
-                    nota3Field.setText(String.valueOf(table.getValueAt(linhaSelecionada, 5)));
-                    // Desativa o textfield da cpf
-                    idField.setEditable(false);
-                    // Desativa o botão
-                    aplicar.setEnabled(false);
                 } else {
-                    // Ativa o botão
-                    aplicar.setEnabled(true);
+                    JOptionPane.showMessageDialog(null, "Por favor, selecione uma matéria da sua especialidade.",
+                            "Aviso", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
@@ -209,11 +243,117 @@ public class JanelaAvaliacao extends JFrame {
             }
         });
 
+        // Configura a ação do botão "editar" para atualizar um registro no banco de
+        // dados
+        editar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Chama o método "atualizar" do objeto operacoes com os valores dos
+
+                // campos de entrada
+                try {
+                    if (linhaSelecionada != -1) {
+                        if (!(idField.getText().isEmpty() || nomeMateriaField.getText().isEmpty()
+                                || nota1Field.getText().isEmpty()
+                                || nota2Field.getText().isEmpty()
+                                || nota3Field.getText().isEmpty() || raAlunoField.getText().isEmpty())) {
+                            boolean raValido = false; // Variável para marcar se o RA foi encontrado
+
+                            for (Aluno aluno : listarAlunos()) {
+                                if (aluno.getRa().equals(raAlunoField.getText())) {
+                                    raValido = true;
+                                    break; // RA encontrado, sai do loop
+                                }
+                            }
+
+                            if (!raValido) { // Se o RA não foi encontrado, lança a exceção
+                                throw new RaValidiationException(
+                                        "RA não encontrado, por favor verifique novamente o RA do aluno.");
+                            }
+
+                            // Método para calcular a média
+                            double media = calcMedia(Double.parseDouble(nota1Field.getText()),
+                                    Double.parseDouble(nota2Field.getText()), Double.parseDouble(nota3Field.getText()));
+                            operacoes.atualizar(Integer.parseInt(idField.getText()),
+                                    nomeMateriaField.getText(),
+                                    Double.parseDouble(nota1Field.getText()),
+                                    Double.parseDouble(nota2Field.getText()),
+                                    Double.parseDouble(nota3Field.getText()), media,
+                                    professor.getCpf(), raAlunoField.getText());
+
+                            // Limpa os campos de entrada após a operação de atualização
+                            // Limpa os campos de entrada após a operação de cadastro
+                            idField.setText(Integer.toString(MateriasID()));
+                            raAlunoField.setText("");
+                            nota1Field.setText("");
+                            nota2Field.setText("");
+                            nota3Field.setText("");
+                            atualizarTabela();
+
+                        } else {
+                            throw new NullPointerException(
+                                    "Informações inválidas. Por favor preencha as informações vazias.");
+                        }
+                    } else {
+                        throw new SelectedTableException("Erro de Seleção, por favor selecione uma linha.");
+                    }
+                } catch (RaValidiationException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "RaValidationException",
+                            JOptionPane.WARNING_MESSAGE);
+                } catch (SelectedTableException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "SelectedTableException",
+                            JOptionPane.WARNING_MESSAGE);
+                } catch (NullPointerException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "NullPointerException",
+                            JOptionPane.WARNING_MESSAGE);
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "NumberFormatException",
+                            JOptionPane.WARNING_MESSAGE);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro.", "Exception",
+                            JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+
+        // Configura a ação do botão "apagar" para excluir um registro no banco de dados
+        apagar.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Chama o método "apagar" do objeto operacoes com o valor do campo de
+
+                // entrada "ra"
+                try {
+                    if (linhaSelecionada != -1) {
+                        if (JOptionPane.showConfirmDialog(null, "Deseja excluir esse cadastro?",
+                                "Excluindo Tarefa...", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                            operacoes.apagar(Integer.parseInt(idField.getText()));
+                            // // Limpa os campos de entrada após a operação de exclusão
+                            idField.setText(Integer.toString(MateriasID()));
+                            raAlunoField.setText("");
+                            nota1Field.setText("");
+                            nota2Field.setText("");
+                            nota3Field.setText("");
+                            atualizarTabela();
+                        }
+                    } else {
+                        throw new SelectedTableException("Erro de Seleção, por favor selecione uma linha.");
+                    }
+                } catch (SelectedTableException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "SelectedTableException",
+                            JOptionPane.WARNING_MESSAGE);
+                }
+            }
+
+        });
+
         // Limpar campos
         limpar.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                idField.setText(Integer.toString(MateriasID()));
                 raAlunoField.setText("");
                 nota1Field.setText("");
                 nota2Field.setText("");

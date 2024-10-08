@@ -5,6 +5,7 @@ import java.awt.event.*;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 
 import com.example.Connection.AlunoDAO;
 import com.example.Controller.AlunoController;
@@ -26,6 +27,8 @@ public class JanelaAluno extends JPanel {
             "3º Ano Ensino Fundamental", "4º Ano Ensino Fundamental", "5º Ano Ensino Fundamental",
             "6º Ano Ensino Fundamental", "7º Ano Ensino Fundamental", "8º Ano Ensino Fundamental",
             "9º Ano Ensino Fundamental", "1º Ano Ensino Médio", "2º Ano Ensino Médio", "3º Ano Ensino Médio", };
+    // MaskFormatter
+    private MaskFormatter cpfFormatter, raFormatter, idadeFormatter;
 
     public JanelaAluno() {
         super();
@@ -36,7 +39,13 @@ public class JanelaAluno extends JPanel {
         inputPanel.setLayout(new GridLayout(7, 2));
         // RA - 1
         inputPanel.add(new JLabel("RA"));
-        raField = new JTextField(6);
+        try {
+            raFormatter = new MaskFormatter("######");
+            raField = new JFormattedTextField(raFormatter);
+            raField.setColumns(10);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         inputPanel.add(raField);
         // Nome - 2
         inputPanel.add(new JLabel("Nome"));
@@ -44,11 +53,23 @@ public class JanelaAluno extends JPanel {
         inputPanel.add(nomeField);
         // Idade - 3
         inputPanel.add(new JLabel("Idade"));
-        idadeField = new JTextField(20);
+        try {
+            idadeFormatter = new MaskFormatter("##");
+            idadeField = new JFormattedTextField(idadeFormatter);
+            idadeField.setColumns(10);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         inputPanel.add(idadeField);
         // CPF - 4
         inputPanel.add(new JLabel("CPF"));
-        cpfField = new JTextField(20);
+        try {
+            cpfFormatter = new MaskFormatter("###.###.###-##");
+            cpfField = new JFormattedTextField(cpfFormatter);
+            cpfField.setColumns(10);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         inputPanel.add(cpfField);
         // Email - 5
         inputPanel.add(new JLabel("Email"));

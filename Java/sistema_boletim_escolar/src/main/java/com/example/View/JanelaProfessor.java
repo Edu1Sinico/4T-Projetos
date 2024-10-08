@@ -7,6 +7,7 @@ import java.awt.event.*;
 import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 
 import com.example.Connection.ProfessorDAO;
 import com.example.Controller.ProfessorController;
@@ -26,6 +27,8 @@ public class JanelaProfessor extends JPanel {
     private String[] especializacaoList = { "Selecione uma especialização", "Língua Portuguesa", "Inglês", "Espanhol",
             "Artes", "Educação Física", "Matemática", "Ciências Básicas", "Física", "Química", "Biologia",
             "História", "Geografia" };
+    // MaskFormatter
+    private MaskFormatter cpfFormatter, idadeFormatter;
 
     public JanelaProfessor() {
         super();
@@ -38,10 +41,22 @@ public class JanelaProfessor extends JPanel {
         nomeField = new JTextField(20);
         inputPanel.add(nomeField);
         inputPanel.add(new JLabel("Idade"));
-        idadeField = new JTextField(20);
+        try {
+            idadeFormatter = new MaskFormatter("##");
+            idadeField = new JFormattedTextField(idadeFormatter);
+            idadeField.setColumns(10);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         inputPanel.add(idadeField);
         inputPanel.add(new JLabel("CPF"));
-        cpfField = new JTextField(20);
+        try {
+            cpfFormatter = new MaskFormatter("###.###.###-##");
+            cpfField = new JFormattedTextField(cpfFormatter);
+            cpfField.setColumns(10);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         inputPanel.add(cpfField);
         inputPanel.add(new JLabel("Email"));
         emailField = new JTextField(20);

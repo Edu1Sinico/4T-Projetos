@@ -92,9 +92,51 @@ public class MateriaDAO {
             stmt.setString(8, raAluno);
             stmt.executeUpdate();
             System.out.println("Dados inseridos com sucesso");
-        } 
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException("Erro ao inserir dados no banco de dados.", e);
+        } finally {
+            ConnectionFactory.closeConnection(connection, stmt);
+        }
+    }
+
+    // Atualizar dados no banco
+    public void atualizar(int id, String nome, double nota1, double nota2, double nota3, double media,
+            String cpfProfessor, String raAluno) {
+        PreparedStatement stmt = null;
+        // Define a instrução SQL parametrizada para atualizar dados pelo ra
+        String sql = "UPDATE materia SET nomeMateria = ?, nota1 = ?, nota2 = ?, nota3 = ?, media = ?, cpfProfessor = ?, raAluno = ? WHERE id = ?";
+        try {
+            stmt = connection.prepareStatement(sql);
+            stmt.setString(1, nome);
+            stmt.setDouble(2, nota1);
+            stmt.setDouble(3, nota2);
+            stmt.setDouble(4, nota3);
+            stmt.setDouble(5, media);
+            stmt.setString(6, cpfProfessor);
+            stmt.setString(7, raAluno);
+            // ID é chave primaria não pode ser alterada.
+            stmt.setInt(8, id);
+            stmt.executeUpdate();
+            System.out.println("Dados atualizados com sucesso");
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao atualizar dados no banco de dados.", e);
+        } finally {
+            ConnectionFactory.closeConnection(connection, stmt);
+        }
+    }
+
+    // Apagar dados do banco
+    public void apagar(int id) {
+        PreparedStatement stmt = null;
+        // Define a instrução SQL parametrizada para apagar dados pelo ID
+        String sql = "DELETE FROM materia WHERE id = ?";
+        try {
+            stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.executeUpdate(); // Executa a instrução SQL
+            System.out.println("Dado apagado com sucesso");
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao apagar dados no banco de dados.", e);
         } finally {
             ConnectionFactory.closeConnection(connection, stmt);
         }
