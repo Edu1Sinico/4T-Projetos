@@ -70,33 +70,15 @@ public class JanelaAvaliacao extends JFrame {
         inputPanel.add(raAlunoField);
         // Nota 1 - 4
         inputPanel.add(new JLabel("Nota 1"));
-        try {
-            doubleFormatter = new MaskFormatter("##.##");
-            nota1Field = new JFormattedTextField(doubleFormatter);
-            nota1Field.setColumns(10);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        nota1Field.setColumns(4);
         inputPanel.add(nota1Field);
         // Nota 2 - 5
         inputPanel.add(new JLabel("Nota 2"));
-        try {
-            doubleFormatter = new MaskFormatter("##.##");
-            nota2Field = new JFormattedTextField(doubleFormatter);
-            nota2Field.setColumns(10);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        nota2Field.setColumns(4);
         inputPanel.add(nota2Field);
         // Nota 3 - 6
         inputPanel.add(new JLabel("Nota 3"));
-        try {
-            doubleFormatter = new MaskFormatter("##.##");
-            nota3Field = new JFormattedTextField(doubleFormatter);
-            nota3Field.setColumns(10);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        nota3Field.setColumns(4);
         inputPanel.add(nota3Field);
 
         mainPanel.add(inputPanel);

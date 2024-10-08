@@ -13,7 +13,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class JanelaLogin extends JFrame {
-    private JButton login;
+    private JButton login, sair;
     private JTextField emailField, senhaField;
     private List<Aluno> alunos;
     private List<Professor> professores;
@@ -55,6 +55,7 @@ public class JanelaLogin extends JFrame {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
         buttonPanel.add(login = new JButton("Login"));
+        buttonPanel.add(sair = new JButton("Sair"));
         inputPanel.add(buttonPanel);
 
         mainPanel.add(inputPanel);
@@ -74,7 +75,7 @@ public class JanelaLogin extends JFrame {
         login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
                 try {
                     if (!(emailField.getText().isEmpty() || senhaField.getText().isEmpty())) {
 
@@ -128,13 +129,25 @@ public class JanelaLogin extends JFrame {
                     JOptionPane.showMessageDialog(null,
                             "Formatação inválida, por favor digite somente números válidos.", "NumberFormatException",
                             JOptionPane.WARNING_MESSAGE);
-                } 
-                // catch (Exception ex) {
-                //     JOptionPane.showMessageDialog(null, "Erro.", "Exception",
-                //             JOptionPane.WARNING_MESSAGE);
-                // }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro.", "Exception",
+                            JOptionPane.WARNING_MESSAGE);
+                }
             }
+        });
 
+        // Botão de sair
+        sair.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (JOptionPane.showConfirmDialog(null, "Deseja sair do programa?",
+                        "Sair...", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    JOptionPane.showMessageDialog(null, "Obrigado por utilizar o meu programa!",
+                            "Agradecimentos",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
+                }
+            }
         });
     }
 
