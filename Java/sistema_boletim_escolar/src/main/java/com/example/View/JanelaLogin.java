@@ -47,7 +47,7 @@ public class JanelaLogin extends JFrame {
         JPanel senhaPanel = new JPanel();
         senhaPanel.setLayout(new FlowLayout());
         senhaPanel.add(new JLabel("Senha:"));
-        senhaField = new JTextField(20);
+        senhaField = new JPasswordField(20);
         senhaPanel.add(senhaField);
         inputPanel.add(senhaPanel);
 

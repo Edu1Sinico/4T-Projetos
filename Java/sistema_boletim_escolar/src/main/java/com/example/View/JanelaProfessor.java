@@ -62,7 +62,7 @@ public class JanelaProfessor extends JPanel {
         emailField = new JTextField(20);
         inputPanel.add(emailField);
         inputPanel.add(new JLabel("Senha"));
-        senhaField = new JTextField(20);
+        senhaField = new JPasswordField(20);
         inputPanel.add(senhaField);
         inputPanel.add(new JLabel("Espelização"));
         especializacaoBox = new JComboBox(especializacaoList);

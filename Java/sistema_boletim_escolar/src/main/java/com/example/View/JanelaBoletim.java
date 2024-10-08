@@ -19,7 +19,7 @@ public class JanelaBoletim extends JFrame {
 
     // Atributos
     private JButton filtrar, sair;
-    private JTextField raField, nomeField, idadeField, cpfField, emailField, senhaField, turmaField, filtroField;
+    private JTextField raField, nomeField, idadeField, cpfField, emailField, turmaField, filtroField;
     private List<Aluno> alunos;
     private List<Materia> materias;
     private List<Professor> professores;

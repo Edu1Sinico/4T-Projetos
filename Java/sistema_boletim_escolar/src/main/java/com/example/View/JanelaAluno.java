@@ -77,7 +77,7 @@ public class JanelaAluno extends JPanel {
         inputPanel.add(emailField);
         // Senha - 6
         inputPanel.add(new JLabel("Senha"));
-        senhaField = new JTextField(20);
+        senhaField = new JPasswordField(20);
         inputPanel.add(senhaField);
         // Turma - 7
         inputPanel.add(new JLabel("Turma"));
